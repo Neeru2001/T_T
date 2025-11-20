@@ -3,6 +3,7 @@ Flask-SQLAlchemy
 Flask-Login
 Werkzeug
 mysql-connector-python
+gunicorn
 
 # Please uncomment one of the following lines depending on your database:
 # psycopg2-binary # For PostgreSQL
