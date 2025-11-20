@@ -12,7 +12,10 @@
     <header>
         <nav>
             <h1 class="logo"><a href="{{ url_for('home') }}">GN Travels</a></h1>
-            <ul>
+            <div class="menu-toggle" id="mobile-menu">
+                <i class="fas fa-bars"></i>
+            </div>
+            <ul class="nav-list">
                 <li><a href="{{ url_for('home') }}">Home</a></li>
                 <li><a href="{{ url_for('about') }}">About</a></li>
                 <li><a href="{{ url_for('tours') }}">Tours</a></li>
@@ -82,5 +85,10 @@
             <p>&copy; 2025 Tour & Travels. All Rights Reserved.</p>
         </div>
     </footer>
+    <script>
+        document.getElementById('mobile-menu').addEventListener('click', function() {
+            document.querySelector('.nav-list').classList.toggle('show');
+        });
+    </script>
 </body>
 </html>
