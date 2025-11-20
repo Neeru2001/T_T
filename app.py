@@ -1,17 +1,29 @@
 from flask import Flask, render_template, request, flash, redirect, url_for
 from flask_sqlalchemy import SQLAlchemy
 from sqlalchemy import text
-import db_config
+import os
 from urllib.parse import quote_plus
 import re
 from werkzeug.security import generate_password_hash, check_password_hash
 from flask_login import LoginManager, UserMixin, login_user, logout_user, login_required, current_user
 
 app = Flask(__name__)
-app.config['SECRET_KEY'] = 'your_secret_key'  # IMPORTANT: Replace with a strong, unique secret key in production!
-# Database configuration using db_config.py
-encoded_password = quote_plus(db_config.DB_PASSWORD)
-app.config['SQLALCHEMY_DATABASE_URI'] = f"mysql+mysqlconnector://{db_config.DB_USER}:{encoded_password}@{db_config.DB_HOST}:{db_config.DB_PORT}/{db_config.DB_NAME}"
+app.config['SECRET_KEY'] = os.environ.get('SECRET_KEY', 'your_fallback_secret_key_for_local_dev') # Use environment variable
+# Database configuration using environment variables
+DB_USER = os.environ.get('DB_USER')
+DB_PASSWORD = os.environ.get('DB_PASSWORD')
+DB_HOST = os.environ.get('DB_HOST')
+DB_PORT = os.environ.get('DB_PORT', '3306') # Default MySQL port
+DB_NAME = os.environ.get('DB_NAME')
+
+if DB_USER and DB_PASSWORD and DB_HOST and DB_NAME:
+    encoded_password = quote_plus(DB_PASSWORD)
+    app.config['SQLALCHEMY_DATABASE_URI'] = f"mysql+mysqlconnector://{DB_USER}:{encoded_password}@{DB_HOST}:{DB_PORT}/{DB_NAME}"
+else:
+    # Fallback for local development or error if env vars are not set
+    app.config['SQLALCHEMY_DATABASE_URI'] = "sqlite:///instance/contacts.db" # Or another local database
+    print("WARNING: Database environment variables not set. Using SQLite fallback.")
+
 app.config['SQLALCHEMY_TRACK_MODIFICATIONS'] = False
 db = SQLAlchemy(app)
 
