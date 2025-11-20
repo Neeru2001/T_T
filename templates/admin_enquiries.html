@@ -1,0 +1,55 @@
+{% extends 'base.html' %}
+
+{% block title %}Manage Enquiries - Admin Panel{% endblock %}
+
+{% block content %}
+<div class="container">
+    <div class="admin-container">
+        <h2>Manage Enquiries</h2>
+        <p><a href="{{ url_for('admin') }}">Back to Admin Panel</a></p>
+
+        {% with messages = get_flashed_messages(with_categories=true) %}
+            {% if messages %}
+                {% for category, message in messages %}
+                    <div class="flash-message {{ category }}">
+                        {{ message }}
+                    </div>
+                {% endfor %}
+            {% endif %}
+        {% endwith %}
+
+        {% if enquiries %}
+            <table class="enquiry-table">
+                <thead>
+                    <tr>
+                        <th>ID</th>
+                        <th>Name</th>
+                        <th>Email</th>
+                        <th>Subject</th>
+                        <th>Message</th>
+                        <th>Timestamp</th>
+                        <th>Actions</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    {% for enquiry in enquiries %}
+                    <tr>
+                        <td>{{ enquiry.id }}</td>
+                        <td>{{ enquiry.name }}</td>
+                        <td>{{ enquiry.email }}</td>
+                        <td>{{ enquiry.subject }}</td>
+                        <td>{{ enquiry.message[:50] }}...</td> {# Truncate message for table view #}
+                        <td>{{ enquiry.timestamp.strftime('%Y-%m-%d %H:%M') }}</td>
+                        <td>
+                            <a href="{{ url_for('admin_enquiry_details', enquiry_id=enquiry.id) }}" class="btn btn-view">Open</a>
+                        </td>
+                    </tr>
+                    {% endfor %}
+                </tbody>
+            </table>
+        {% else %}
+            <p>No enquiries found.</p>
+        {% endif %}
+    </div>
+</div>
+{% endblock %}

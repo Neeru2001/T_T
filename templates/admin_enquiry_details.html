@@ -1,0 +1,37 @@
+{% extends 'base.html' %}
+
+{% block title %}Enquiry Details - Admin Panel{% endblock %}
+
+{% block content %}
+<div class="container">
+    <div class="admin-container">
+        <h2>Enquiry Details</h2>
+        <p><a href="{{ url_for('admin_enquiries') }}">Back to Enquiries List</a></p>
+
+        {% with messages = get_flashed_messages(with_categories=true) %}
+            {% if messages %}
+                {% for category, message in messages %}
+                    <div class="flash-message {{ category }}">
+                        {{ message }}
+                    </div>
+                {% endfor %}
+            {% endif %}
+        {% endwith %}
+
+        {% if enquiry %}
+            <div class="enquiry-details-card">
+                <p><strong>ID:</strong> {{ enquiry.id }}</p>
+                <p><strong>Name:</strong> {{ enquiry.name }}</p>
+                <p><strong>Email:</strong> {{ enquiry.email }}</p>
+                <p><strong>Phone:</strong> {{ enquiry.phone }}</p>
+                <p><strong>Subject:</strong> {{ enquiry.subject }}</p>
+                <p><strong>Message:</strong></p>
+                <p class="enquiry-message">{{ enquiry.message }}</p>
+                <p><strong>Timestamp:</strong> {{ enquiry.timestamp.strftime('%Y-%m-%d %H:%M') }}</p>
+            </div>
+        {% else %}
+            <p>Enquiry not found.</p>
+        {% endif %}
+    </div>
+</div>
+{% endblock %}

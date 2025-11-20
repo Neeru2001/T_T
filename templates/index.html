@@ -1,0 +1,123 @@
+{% extends 'base.html' %}
+
+{% block title %}Home - Tour & Travels{% endblock %}
+
+{% block content %}
+<section class="hero">
+    <div class="hero-content">
+        <h1>Explore the World With Us</h1>
+        <p>Your journey begins here. Discover amazing places at exclusive prices.</p>
+        <a href="{{ url_for('tours') }}" class="btn">View Our Tours</a>
+    </div>
+</section>
+
+<section class="featured-tours">
+    <h2>Featured Tours</h2>
+    <div class="tour-grid">
+        <div class="tour-card">
+            <img src="static/images/paris.png" alt="Paris">
+            <h3>Parisian Dream</h3>
+            <p>Experience the romance and charm of Paris. Visit the Eiffel Tower, Louvre Museum, and more.</p>
+            <!-- <p class="price">$1,200</p> -->
+            <a href="{{ url_for('contact') }}" class="btn">Enquire Now</a>
+        </div>
+        <div class="tour-card">
+            <img src="static/images/tokyo.png" alt="Tokyo">
+            <h3>Tokyo Adventure</h3>
+            <p>Explore the vibrant culture of Tokyo. From ancient temples to modern skyscrapers.</p>
+            <!-- <p class="price">$1,500</p> -->
+            <a href="{{ url_for('contact') }}" class="btn">Enquire Now</a>
+        </div>
+        <div class="tour-card">
+            <img src="static/images/Rome.png" alt="Rome">
+            <h3>Roman Holiday</h3>
+            <p>Discover the history of the Roman Empire. Visit the Colosseum, Roman Forum, and Vatican City.</p>
+            <!-- <p class="price">$1,100</p> -->
+            <a href="{{ url_for('contact') }}" class="btn">Enquire Now</a>
+        </div>
+    </div>
+</section>
+
+<section class="services">
+    <div class="container">
+        <h2>Our Services</h2>
+        <div class="service-grid">
+            <div class="service-item">
+                <i class="fas fa-plane"></i>
+                <h3>Flight Booking</h3>
+                <p>We provide the best deals on flight bookings to destinations all around the world.</p>
+            </div>
+            <div class="service-item">
+                <i class="fas fa-hotel"></i>
+                <h3>Accommodation</h3>
+                <p>Stay in the best hotels with our curated list of accommodations for every budget.</p>
+            </div>
+            <div class="service-item">
+                <i class="fas fa-car"></i>
+                <h3>Car Rentals</h3>
+                <p>Explore your destination at your own pace with our reliable car rental services.</p>
+            </div>
+        </div>
+    </div>
+</section>
+
+<section class="gallery">
+    <h2>Our Gallery</h2>
+    <div class="gallery-grid">
+        <div class="gallery-item">
+            <img src="static/images/beach.png" alt="Beach">
+        </div>
+        <div class="gallery-item">
+            <img src="static/images/mountains.png" alt="Mountains">
+        </div>
+        <div class="gallery-item">
+            <img src="static/images/city.png" alt="City">
+        </div>
+        <div class="gallery-item">
+            <img src="static/images/desert.png" alt="Desert">
+        </div>
+    </div>
+</section>
+
+<section class="contact">
+    <div class="container">
+        <div class="contact-container">
+            <div class="contact-form">
+                <h2>Get in Touch</h2>
+                <form action="{{ url_for('contact') }}" method="post">
+                    <div class="form-group">
+                        <input type="text" id="name" name="name" placeholder="Your Name" value="{{ current_user.full_name if current_user.is_authenticated and current_user.full_name else '' }}" required>
+                    </div>
+                    <div class="form-group">
+                        <input type="email" id="email" name="email" placeholder="Your Email" value="{{ current_user.email if current_user.is_authenticated else '' }}" required>
+                    </div>
+                    <div class="form-group">
+                        <input type="number" id="phone" name="phone" placeholder="Your Phone" value="{{ current_user.phone_number if current_user.is_authenticated and current_user.phone_number else '' }}" required>
+                    </div>
+                    <div class="form-group">
+                        <input type="text" id="subject" name="subject" placeholder="Subject" required>
+                    </div>
+                    <div class="form-group">
+                        <textarea id="message" name="message" rows="5" placeholder="Your Message" required></textarea>
+                    </div>
+                    <button type="submit" class="btn">Send Message</button>
+                </form>
+            </div>
+            <div class="contact-info">
+                <h3>Contact Information</h3>
+                <p>Our team is here to assist you with any questions or concerns. Whether you're planning your next adventure or need help with an existing booking, we're just a message away.</p>
+                <ul>
+                    <li><i class="fas fa-map-marker-alt"></i> 123 Travel Lane, Wanderlust City, World</li>
+                    <li><i class="fas fa-phone"></i> +123 456 7890</li>
+                    <li><i class="fas fa-envelope"></i> info@tourandtravels.com</li>
+                </ul>
+                <div class="social-links">
+                    <a href="#"><i class="fab fa-facebook-f"></i></a>
+                    <a href="#"><i class="fab fa-twitter"></i></a>
+                    <a href="#"><i class="fab fa-instagram"></i></a>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+{% endblock %}

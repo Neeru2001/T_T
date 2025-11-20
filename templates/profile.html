@@ -1,0 +1,30 @@
+{% extends 'base.html' %}
+
+{% block title %}Profile - Tour & Travels{% endblock %}
+
+{% block content %}
+<div class="container profile-page-container">
+    <div class="profile-section profile-details">
+        <h2>Profile Details</h2>
+        <p><strong>Email:</strong> {{ current_user.email }}</p>
+        <p><strong>Full Name:</strong> {{ current_user.full_name or 'N/A' }}</p>
+        <p><strong>Phone Number:</strong> {{ current_user.phone_number or 'N/A' }}</p>
+        <p><strong>Role:</strong> {% if current_user.is_admin %}Admin{% else %}User{% endif %}</p>
+    </div>
+
+    <div class="profile-section edit-profile">
+        <h2>Edit Profile</h2>
+        <form action="{{ url_for('profile') }}" method="POST">
+            <div class="form-group">
+                <label for="full_name">Full Name:</label>
+                <input type="text" id="full_name" name="full_name" value="{{ current_user.full_name or '' }}">
+            </div>
+            <div class="form-group">
+                <label for="phone_number">Phone Number:</label>
+                <input type="text" id="phone_number" name="phone_number" value="{{ current_user.phone_number or '' }}">
+            </div>
+            <button type="submit" class="btn">Update Profile</button>
+        </form>
+    </div>
+</div>
+{% endblock %}

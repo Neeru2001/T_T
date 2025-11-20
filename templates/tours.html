@@ -1,0 +1,52 @@
+{% extends 'base.html' %}
+
+{% block title %}Our Tours - Tour & Travels{% endblock %}
+
+{% block content %}
+<div class="container">
+    <h2>Explore Our Tour Packages</h2>
+    <p>We offer a variety of tours to the most beautiful and exciting destinations in the world. Browse through our packages below and find your next adventure!</p>
+
+    <div class="tour-list">
+        <div class="tour-item">
+            <img src="static/images/paris.png" alt="Paris">
+            <div class="tour-info">
+                <h3>Parisian Dream</h3>
+                <p>Experience the romance and charm of Paris. This 7-day trip includes visits to the Eiffel Tower, Louvre Museum, Notre-Dame Cathedral, and a romantic dinner cruise on the Seine.</p>
+                <!-- <p class="price">$1,200 per person</p> -->
+                <a href="{{ url_for('contact') }}" class="btn">Enquire Now</a>
+            </div>
+        </div>
+
+        <div class="tour-item">
+            <img src="static/images/tokyo.png" alt="Tokyo">
+            <div class="tour-info">
+                <h3>Tokyo Adventure</h3>
+                <p>Explore the vibrant culture of Tokyo with our 10-day package. From the ancient Senso-ji Temple to the bustling Shibuya Crossing and the serene Meiji Shrine, this tour has it all.</p>
+                <!-- <p class="price">$1,500 per person</p> -->
+                <a href="{{ url_for('contact') }}" class="btn">Enquire Now</a>
+            </div>
+        </div>
+
+        <div class="tour-item">
+            <img src="static/images/rome.png" alt="Rome">
+            <div class="tour-info">
+                <h3>Roman Holiday</h3>
+                <p>Discover the rich history of the Roman Empire in this 8-day tour. Visit the Colosseum, Roman Forum, Vatican City, and enjoy authentic Italian cuisine.</p>
+                <!-- <p class="price">$1,100 per person</p> -->
+                <a href="{{ url_for('contact') }}" class="btn">Enquire Now</a>
+            </div>
+        </div>
+
+        <div class="tour-item">
+            <img src="static/images/newyork.png" alt="New York">
+            <div class="tour-info">
+                <h3>New York, New York</h3>
+                <p>The city that never sleeps awaits you. A 5-day trip to see the Statue of Liberty, Times Square, Central Park, and catch a Broadway show.</p>
+                <!-- <p class="price">$900 per person</p> -->
+                <a href="{{ url_for('contact') }}" class="btn">Enquire Now</a>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}

@@ -1,0 +1,54 @@
+{% extends 'base.html' %}
+
+{% block title %}Manage Customers - Admin Panel{% endblock %}
+
+{% block content %}
+<div class="container">
+    <div class="admin-container">
+        <h2>Manage Customers</h2>
+        <p><a href="{{ url_for('admin') }}">Back to Admin Panel</a></p>
+
+        {% with messages = get_flashed_messages(with_categories=true) %}
+            {% if messages %}
+                {% for category, message in messages %}
+                    <div class="flash-message {{ category }}">
+                        {{ message }}
+                    </div>
+                {% endfor %}
+            {% endif %}
+        {% endwith %}
+
+        {% if users %}
+            <table class="customer-table">
+                <thead>
+                    <tr>
+                        <th>ID</th>
+                        <th>Email</th>
+                        <th>Full Name</th>
+                        <th>Phone Number</th>
+                        <th>Admin</th>
+                        <th>Actions</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    {% for user in users %}
+                    <tr>
+                        <td>{{ user.id }}</td>
+                        <td>{{ user.email }}</td>
+                        <td>{{ user.full_name or 'N/A' }}</td>
+                        <td>{{ user.phone_number or 'N/A' }}</td>
+                        <td>{% if user.is_admin %}Yes{% else %}No{% endif %}</td>
+                        <td>
+                            <a href="{{ url_for('admin_customer_details', user_id=user.id) }}" class="btn btn-view">View</a>
+                            <a href="{{ url_for('admin_customer_edit', user_id=user.id) }}" class="btn btn-edit">Edit</a>
+                        </td>
+                    </tr>
+                    {% endfor %}
+                </tbody>
+            </table>
+        {% else %}
+            <p>No customers found.</p>
+        {% endif %}
+    </div>
+</div>
+{% endblock %}

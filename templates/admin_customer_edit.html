@@ -1,0 +1,46 @@
+{% extends 'base.html' %}
+
+{% block title %}Edit Customer - Admin Panel{% endblock %}
+
+{% block content %}
+<div class="container">
+    <div class="admin-container">
+        <h2>Edit Customer: {{ user.email }}</h2>
+        <p><a href="{{ url_for('admin_customer_details', user_id=user.id) }}">Back to Customer Details</a></p>
+
+        {% with messages = get_flashed_messages(with_categories=true) %}
+            {% if messages %}
+                {% for category, message in messages %}
+                    <div class="flash-message {{ category }}">
+                        {{ message }}
+                    </div>
+                {% endfor %}
+            {% endif %}
+        {% endwith %}
+
+        <form action="{{ url_for('admin_customer_edit', user_id=user.id) }}" method="POST" class="edit-customer-form">
+            <div class="form-group">
+                <label for="email">Email:</label>
+                <input type="email" id="email" name="email" value="{{ user.email }}" readonly>
+            </div>
+            <div class="form-group">
+                <label for="full_name">Full Name:</label>
+                <input type="text" id="full_name" name="full_name" value="{{ user.full_name or '' }}">
+            </div>
+            <div class="form-group">
+                <label for="phone_number">Phone Number:</label>
+                <input type="text" id="phone_number" name="phone_number" value="{{ user.phone_number or '' }}">
+            </div>
+            <div class="form-group">
+                <label for="password">New Password (leave blank to keep current):</label>
+                <input type="password" id="password" name="password">
+            </div>
+            <div class="form-group checkbox-group">
+                <input type="checkbox" id="is_admin" name="is_admin" {% if user.is_admin %}checked{% endif %}>
+                <label for="is_admin">Is Admin</label>
+            </div>
+            <button type="submit" class="btn">Update Customer</button>
+        </form>
+    </div>
+</div>
+{% endblock %}
