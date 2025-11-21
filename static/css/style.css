@@ -270,9 +270,9 @@ footer {
 
 @media (max-width: 768px) {
     .tour-grid {
-        grid-template-columns: 1fr; /* Single column on small screens */
-    }
-}
+        grid-template-columns: 1fr; /*Single column on small screens */
+     }
+}  
 
 .tour-card {
     background: #fff;
@@ -709,4 +709,11 @@ footer {
 .enquiry-table .btn {
     padding: 5px 10px;
     font-size: 0.9rem;
+}
+
+@media (max-width: 768px) {
+    .tour-item {
+        grid-template-columns: 1fr;
+        gap: 20px;
+    }
 }
