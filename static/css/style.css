@@ -192,68 +192,7 @@ footer {
 }
 
 
-/* Hero Section */
-@keyframes zoom-in-out {
-    0% {
-        transform: scale(1);
-    }
-    50% {
-        transform: scale(1.1);
-    }
-    100% {
-        transform: scale(1);
-    }
-}
 
-.hero {
-    background: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)), url('https://placehold.co/1200x500/333/fff?text=Welcome!') no-repeat center center/cover;
-    color: #fff;
-    height: 70vh;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    text-align: center;
-    animation: zoom-in-out 10s ease-in-out infinite;
-}
-
-@keyframes slide-up {
-    0% {
-        opacity: 0;
-        transform: translateY(50px);
-    }
-    100% {
-        opacity: 1;
-        transform: translateY(0);
-    }
-}
-
-.hero-content {
-    animation: slide-up 1s ease-out;
-}
-
-.hero-content h1 {
-    font-size: 3rem;
-    margin-bottom: 1rem;
-}
-
-.hero-content p {
-    font-size: 1.5rem;
-    margin-bottom: 2rem;
-}
-
-.btn {
-    display: inline-block;
-    background: #0779e4;
-    color: #fff;
-    padding: 10px 20px;
-    text-decoration: none;
-    border-radius: 5px;
-    transition: background 0.3s ease;
-}
-
-.btn:hover {
-    background: #045aa8;
-}
 
 /* Featured Tours Section */
 .featured-tours {
@@ -550,7 +489,7 @@ footer {
     margin-bottom: 10px;
 }
 
-.admin-sections a {
+.btn {
     display: inline-block;
     background: #0779e4;
     color: #fff;
