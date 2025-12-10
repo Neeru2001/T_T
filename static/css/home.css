@@ -167,7 +167,7 @@
     align-items: center;
     justify-content: center;
     min-height: 60vh; /* Adjust as needed */
-    animation: zoom-in-out 10s ease-in-out infinite;
+    animation: zoom-in-out 10s;
 }
 
 .hero-content h1 {
