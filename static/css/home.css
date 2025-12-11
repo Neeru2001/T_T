@@ -170,16 +170,41 @@
     animation: zoom-in-out 10s;
 }
 
+/* new css */
+
+.hero-content {
+    /* width: 50%;       */
+    position: absolute;
+    top: 50%;
+    left: 8%;                  /* Move content from left edge */
+    transform: translateY(-50%);
+    text-align: left;          /* Align all text to left */
+    animation: slide-up 1s ease-out forwards;
+}
+
+/* Title */
 .hero-content h1 {
     font-size: 3.5rem;
     margin-bottom: 15px;
+    text-align: left;
 }
 
+/* Subtitle */
 .hero-content p {
     font-size: 1.5rem;
     margin-bottom: 30px;
+    text-align: left;
 }
 
+/* Buttons Wrapper (LEFT) */
+.hero-buttons {
+    margin-top: 30px;
+    display: flex;
+    gap: 20px;
+    justify-content: flex-start;   /* Align buttons left */
+}
+
+/* Buttons */
 .hero-content .btn {
     background-color: #0779e4;
     color: white;
@@ -194,64 +219,39 @@
     background-color: #055aab;
 }
 
-.hero-buttons {
-    margin-top: 30px;
-    display: flex;
-    gap: 20px; /* Space between buttons */
-    justify-content: center;
-}
-
+/* Primary Button */
 .btn-primary {
-    background-color: #453db6 !important; /* Blue */
-    color: white;
-    padding: 12px 25px;
-    border-radius: 5px;
-    text-decoration: none;
-    font-size: 1.1rem;
-    transition: background-color 0.3s ease;
+    background-color: #453db6 !important;
 }
 
-.btn-primary:hover {
-    background-color: #055aab !important;
-}
-
+/* Secondary Button */
 .btn-secondary {
-    background-color: #9ba3a2 !important; /* Yellow */
-    color: white;
-    padding: 12px 25px;
-    border-radius: 5px;
-    text-decoration: none;
-    font-size: 1.1rem;
-    transition: background-color 0.3s ease;
+    background-color: #9ba3a2 !important;
 }
 
 .btn-secondary:hover {
     background-color: #767387 !important;
 }
 
+/* Animation – keep as is */
 @keyframes zoom-in-out {
-    0% {
-        transform: scale(1);
-    }
-    50% {
-        transform: scale(1.1);
-    }
-    100% {
-        transform: scale(1);
-    }
+    0% { transform: scale(1); }
+    50% { transform: scale(1.1); }
+    100% { transform: scale(1); }
 }
 
 @keyframes slide-up {
     0% {
         opacity: 0;
-        transform: translateY(50px);
+        transform: translateY(100px); /* starts lower */
     }
     100% {
         opacity: 1;
-        transform: translateY(0);
+        transform: translateY(-100); /* ends higher */
     }
 }
 
-.hero-content {
-    animation: slide-up 1s ease-out;
-}
+
+
+
+/* new css */
