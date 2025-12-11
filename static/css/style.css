@@ -5,7 +5,7 @@ body {
     padding: 0;
     background-color: #f4f4f4;
     color: #333;
-    line-height: 1.6;
+    /* line-height: 0.7; */
 }
 
 .container {
@@ -29,7 +29,7 @@ nav {
     display: flex;
     justify-content: space-between;
     align-items: center;
-    flex-wrap: wrap; /* Allow items to wrap */
+    flex-wrap: wrap; 
 }
 
 nav .logo a {
@@ -70,7 +70,7 @@ nav .nav-list a:hover {
 
 @media (max-width: 768px) {
     nav {
-        flex-direction: column; /* Stack items vertically */
+        /* flex-direction: column; Stack items vertically */
         align-items: flex-start; /* Align items to the start */
     }
 
@@ -102,6 +102,7 @@ nav .nav-list a:hover {
 
     /* Hamburger icon */
     .menu-toggle {
+        margin-top: 18px;
         display: block; /* Show hamburger icon on small screens */
         color: #fff;
         font-size: 1.5rem;
@@ -190,6 +191,8 @@ footer {
     border-top: 1px solid #444;
     margin-top: 30px;
 }
+
+
 
 
 /* Featured Tours Section */
@@ -304,6 +307,7 @@ footer {
 @media (max-width: 768px) {
     .contact-container {
         grid-template-columns: 1fr; /* Stack columns on small screens */
+        padding-left: 25px;
     }
 }
 
