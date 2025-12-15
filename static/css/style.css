@@ -16,20 +16,26 @@ body {
 }
 
 /* Header and Navigation */
+/* --------------------------
+   NAVIGATION BAR
+--------------------------- */
+
 header {
     background: #333;
     color: #fff;
     padding: 0rem 0;
     border-bottom: #0779e4 3px solid;
+    position: relative;
+    z-index: 1000;
 }
 
 nav {
-    width: 90%; /* Adjusted for smaller screens */
+    width: 90%;
     margin: auto;
     display: flex;
     justify-content: space-between;
     align-items: center;
-    flex-wrap: wrap; 
+    flex-wrap: wrap;
 }
 
 nav .logo a {
@@ -37,18 +43,18 @@ nav .logo a {
     text-decoration: none;
     font-size: 1.5rem;
     font-weight: bold;
-    padding: 10px 0; /* Add padding for better touch target */
+    padding: 10px 0;
 }
 
-nav .nav-list { /* Target the specific ul with class nav-list */
+/* DESKTOP NAV */
+nav .nav-list {
     padding: 0;
     list-style: none;
-    display: flex; /* Keep as flex for larger screens */
+    display: flex;
     margin: 0;
 }
 
 nav .nav-list li {
-    display: inline;
     margin-left: 20px;
 }
 
@@ -56,66 +62,67 @@ nav .nav-list a {
     color: #fff;
     text-decoration: none;
     font-size: 1.1rem;
-    padding: 10px 0; /* Add padding for better touch target */
+    padding: 10px 0;
 }
 
 nav .nav-list a:hover {
     color: #0779e4;
 }
 
-/* Responsive Navigation */
+/* --------------------------
+   MOBILE NAV OVERLAY MENU
+--------------------------- */
+
 .menu-toggle {
-    display: none; /* Hidden by default on larger screens */
+    display: none;
 }
 
+/* Mobile styles */
 @media (max-width: 768px) {
-    nav {
-        /* flex-direction: column; Stack items vertically */
-        align-items: flex-start; /* Align items to the start */
+
+    /* Show toggle icon */
+    .menu-toggle {
+        margin-top: 18px;
+        display: block;
+        color: #fff;
+        font-size: 1.7rem;
+        cursor: pointer;
+        padding: 10px;
+        z-index: 1200;
     }
 
-    nav .nav-list { /* Target the specific ul with class nav-list */
-        flex-direction: column; /* Stack menu items vertically */
+    /* Make nav-list full-screen overlay */
+    nav .nav-list {
+        display: none; /* hidden by default */
+        flex-direction: column;
+        position: fixed;
+        top: 0;
+        left: 0;
+        height: 100vh;
         width: 100%;
-        display: none; /* Hide by default, will be toggled by JS if a hamburger menu is implemented */
+        background: rgba(0,0,0,0.95);
+        z-index: 1100;
+        padding-top: 80px;
+        align-items: center;
     }
 
-    nav .nav-list.show { /* Class to show the menu */
+    /* Show menu when toggled */
+    nav .nav-list.show {
         display: flex;
     }
 
     nav .nav-list li {
-        margin: 0;
+        margin: 15px 0;
         width: 100%;
         text-align: center;
-        border-bottom: 1px solid #555; /* Separator for stacked items */
-    }
-
-    nav .nav-list li:last-child {
-        border-bottom: none;
     }
 
     nav .nav-list a {
-        display: block; /* Make links full width */
-        padding: 15px 0;
-    }
-
-    /* Hamburger icon */
-    .menu-toggle {
-        margin-top: 18px;
-        display: block; /* Show hamburger icon on small screens */
+        font-size: 1.4rem;
+        padding: 18px 0;
+        width: 100%;
+        display: block;
         color: #fff;
-        font-size: 1.5rem;
-        cursor: pointer;
-        padding: 10px;
-    }
-}
-
-/* General Container Adjustment */
-@media (max-width: 768px) {
-    .container {
-        width: 95%; /* More width on small screens */
-        padding: 10px 0;
     }
 }
 
