@@ -338,30 +338,51 @@ footer {
     box-shadow: 0 2px 5px rgba(0,0,0,0.1);
 }
 
-/* Flash Messages */
-.flash-message {
-    width: 100%;
-    margin: 20px auto;
-    padding: 15px;
-    text-align: center;
-    border-radius: 5px;
-    font-size: 1.1rem;
-    z-index: 1000; /* Ensure it's on top */
-    position: relative; /* Needed for z-index to work */
-    display: block !important;
-    border: 1px solid transparent; /* Add a default border */
+/* Flash Messages (Toasts) */
+.toast-container {
+    position: fixed;
+    top: 80px;
+    right: 20px;
+    z-index: 9999;
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
 }
 
-.flash-message.message { /* Default/Success */
-    color: #155724 !important; /* Dark green text */
-    background-color: #d4edda !important; /* Light green background */
-    border-color: #c3e6cb !important; /* Green border */
+.flash-message {
+    padding: 15px 20px;
+    border-radius: 5px;
+    font-size: 1rem;
+    border: 1px solid transparent;
+    opacity: 1;
+    transition: opacity 0.5s ease-out, transform 0.5s ease-out;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+    max-width: 350px;
+}
+
+.flash-message.hide {
+    opacity: 0;
+    transform: translateY(-20px);
+    pointer-events: none;
+}
+
+.flash-message.message,
+.flash-message.success {
+    color: #155724;
+    background-color: #d4edda;
+    border-color: #c3e6cb;
 }
 
 .flash-message.error {
-    color: #721c24 !important; /* Dark red text */
-    background-color: #f8d7da !important; /* Light red background */
-    border-color: #f5c6cb !important; /* Red border */
+    color: #721c24;
+    background-color: #f8d7da;
+    border-color: #f5c6cb;
+}
+
+.flash-message.warning {
+    color: #856404;
+    background-color: #fff3cd;
+    border-color: #ffeeba;
 }
 
 /* Login Page */
